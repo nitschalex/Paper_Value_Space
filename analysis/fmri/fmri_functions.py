@@ -86,8 +86,7 @@ def preprocess_confounds(confounds, confound_regressors):
     confounds_filtered : preprocessed confounds
 
     """
-    
-    '''Preprocess confound regressors'''
+
     # filter confounds to include only selected confound regressors
     confound_reg_names = [col for col in confounds.columns if
                           any([conf in col for conf in confound_regressors])]  
@@ -114,9 +113,7 @@ def demean_regressors(events):
     events : events df with demeaned regressors
 
     """
-    
-    '''Check whether regressors in events are parametrically modulated 
-    and demean them if this is the case'''
+
     regressors = events['trial_type'].unique().tolist()
     for reg in regressors:
         mod = events.loc[events['trial_type']==reg, 'modulation']
